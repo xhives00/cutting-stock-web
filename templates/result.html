@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Result</title>
+    <style>
+      body { font-family: system-ui, sans-serif; max-width: 900px; margin: 40px auto; padding: 0 16px; }
+      pre { background: #f6f6f6; padding: 12px; overflow:auto; }
+    </style>
+  </head>
+  <body>
+    <h1>Výsledok</h1>
+
+    <p><b>Stock length:</b> {{ stock_length }} mm</p>
+    <p><b>Items:</b> {{ items }}</p>
+
+    <h2>Solver output</h2>
+    <pre>{{ result | tojson(indent=2) }}</pre>
+
+    <p><a href="/">← späť</a></p>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>1D Cutting Stock</title>
+    <style>
+      body { font-family: system-ui, sans-serif; max-width: 900px; margin: 40px auto; padding: 0 16px; }
+      textarea { width: 100%; height: 220px; }
+      input { width: 180px; }
+      .err { background: #fee; border: 1px solid #f99; padding: 10px; margin: 12px 0; }
+      .hint { color: #555; }
+    </style>
+  </head>
+  <body>
+    <h1>1D Cutting Stock (Flask)</h1>
+
+    {% if error %}
+      <div class="err">{{ error }}</div>
+    {% endif %}
+
+    <form method="post" action="/solve">
+      <div>
+        <label>Stock length (mm):</label><br>
+        <input name="stock_length" value="4000" />
+      </div>
+    <div style="margin-top: 12px;">
+        <label>Kerf (šírka rezu, mm):</label><br>
+        <input name="kerf" value="3" />
+    </div>
+      <div style="margin-top: 12px;">
+        <label>Požiadavky (každý riadok: length x count):</label><br>
+        <textarea name="items">1200x20
+2400x10
+900x9
+800x3</textarea>
+        <div class="hint">Príklad: 1200x20 (alebo "1200 20")</div>
+      </div>
+
+      <button style="margin-top: 12px;">Solve</button>
+    </form>
+  </body>
+</html>
