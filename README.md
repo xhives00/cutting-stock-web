@@ -37,3 +37,13 @@ pip install -r requirements.txt
 python app.py
 Then open:
 http://127.0.0.1:5000
+
+---
+
+## Notes
+
+Solver uses heuristics, not guaranteed global optimum
+
+Input size is intentionally limited to prevent excessive computation
+
+Intended for educational and practical use, not safety-critical applications
