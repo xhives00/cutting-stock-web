@@ -14,8 +14,36 @@
     <p><b>Stock length:</b> {{ stock_length }} mm</p>
     <p><b>Items:</b> {{ items }}</p>
 
-    <h2>Solver output</h2>
-    <pre>{{ result | tojson(indent=2) }}</pre>
+    <h2>Výsledné rezanie</h2>
+
+    <table border="1" cellpadding="6" cellspacing="0">
+      <tr>
+        <th>Tyč</th>
+        <th>Kombinácia rezov (mm)</th>
+        <th>Počet kusov</th>
+        <th>Odpad (mm)</th>
+      </tr>
+
+      {% for bar in result.bars %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td>
+          {{ bar.combo | join(" + ") }}
+        </td>
+        <td>{{ bar.combo | length }}</td>
+        <td>{{ bar.waste }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    <h2>Štatistika</h2>
+    <ul>
+      <li>Počet tyčí: {{ result.stats.real_bars }}</li>
+      <li>Ideálne minimum: {{ result.stats.ideal_bars }}</li>
+      <li>Efektivita: {{ "%.2f"|format(result.stats.efficiency * 100) }} %</li>
+      <li>Celkový odpad: {{ result.stats.total_waste }} mm</li>
+    </ul>
+
 
     <p><a href="/">← späť</a></p>
   </body>
